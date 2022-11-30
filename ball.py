@@ -20,3 +20,11 @@ class Ball(Turtle):
         new_x = self.xcor() + self.x_movement
         new_y = self.ycor() + self.y_movement
         self.goto(new_x, new_y)
+
+    def score_reset(self, scorer):
+        self.home()
+        if scorer == "left":
+            self.x_movement = 10
+        elif scorer == "right":
+            self.x_movement = -10
+        self.y_movement = random.choice(STARTING_MOVEMENTS)
