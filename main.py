@@ -1,5 +1,7 @@
 from turtle import Screen
 from paddle import Paddle
+from ball import Ball
+import time
 
 # TODO Draw the table
 # TODO Draw a left and right paddle
@@ -15,6 +17,7 @@ screen.tracer(0)
 
 l_paddle = Paddle((-350, 0))
 r_paddle = Paddle((350, 0))
+ball = Ball()
 
 screen.listen()
 screen.onkey(fun=l_paddle.go_up, key="w")
@@ -24,6 +27,8 @@ screen.onkey(fun=r_paddle.go_down, key="Down")
 
 game_is_on = True
 while game_is_on:
+    time.sleep(0.1)
     screen.update()
+    ball.move()
 
 screen.exitonclick()
