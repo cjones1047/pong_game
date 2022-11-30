@@ -1,4 +1,7 @@
 from turtle import Turtle
+import random
+
+STARTING_MOVEMENTS = [10, -10]
 
 
 class Ball(Turtle):
@@ -8,8 +11,8 @@ class Ball(Turtle):
         self.color("white")
         self.shape("circle")
         self.penup()
-        self.y_movement = 10
-        self.x_movement = 10
+        self.y_movement = random.choice(STARTING_MOVEMENTS)
+        self.x_movement = random.choice(STARTING_MOVEMENTS)
 
     def move(self):
         if self.ycor() > 280 or self.ycor() < -270:

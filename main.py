@@ -30,5 +30,9 @@ while game_is_on:
     time.sleep(0.1)
     screen.update()
     ball.move()
+    if ball.xcor() == l_paddle.xcor() + 10 and ball.distance(l_paddle.position()) < 50:
+        ball.x_movement *= -1
+    elif ball.xcor() == r_paddle.xcor() - 10 and ball.distance(r_paddle.position()) < 50:
+        ball.x_movement *= -1
 
 screen.exitonclick()
