@@ -21,6 +21,9 @@ class Ball(Turtle):
         new_y = self.ycor() + self.y_movement
         self.goto(new_x, new_y)
 
+    def increase_speed(self):
+        self.x_movement *= 1.5
+
     def score_reset(self, scorer):
         self.home()
         if scorer == "left":

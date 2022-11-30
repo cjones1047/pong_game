@@ -28,6 +28,12 @@ screen.onkey(fun=l_paddle.go_down, key="s")
 screen.onkey(fun=r_paddle.go_up, key="Up")
 screen.onkey(fun=r_paddle.go_down, key="Down")
 
+
+def paddle_collision():
+    ball.x_movement *= -1
+    ball.increase_speed()
+
+
 game_is_on = True
 while game_is_on:
     time.sleep(0.1)
@@ -36,10 +42,10 @@ while game_is_on:
     ball.move()
 
     # Detects collision with either paddle:
-    if ball.xcor() == l_paddle.xcor() + 10 and ball.distance(l_paddle.position()) < 50:
-        ball.x_movement *= -1
-    elif ball.xcor() == r_paddle.xcor() - 10 and ball.distance(r_paddle.position()) < 50:
-        ball.x_movement *= -1
+    if ball.xcor() <= l_paddle.xcor() + 10 and ball.distance(l_paddle.position()) < 50:
+        paddle_collision()
+    elif ball.xcor() >= r_paddle.xcor() - 10 and ball.distance(r_paddle.position()) < 50:
+        paddle_collision()
 
     # Detects a score and resets the ball
     if ball.xcor() > LEFT_SCORE:
