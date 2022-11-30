@@ -1,21 +1,36 @@
-from turtle import Turtle, Screen
+from turtle import Screen, Turtle
 
 # TODO Draw the table
 # TODO Draw a left and right paddle
 # TODO Draw the ball and make it move
 # TODO Draw a scoreboard
 # TODO Draw the vertical table separator down the center of the table
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 400
-SCREEN_BACKGROUND = "black"
-SCREEN_TITLE = "Pong"
-SCREEN_TRACE = 0
 
 screen = Screen()
-screen.setup(width=SCREEN_WIDTH, height=SCREEN_HEIGHT)
-screen.bgcolor(SCREEN_BACKGROUND)
-screen.title(SCREEN_TITLE)
-screen.tracer(SCREEN_TRACE)
+screen.setup(width=800, height=600)
+screen.bgcolor("black")
+screen.title("Pong")
 
+left_paddle = Turtle()
+left_paddle.color("white")
+left_paddle.shape("square")
+left_paddle.penup()
+left_paddle.shapesize(stretch_wid=5, stretch_len=1)
+left_paddle.goto(-350, 0)
+
+
+def go_up():
+    new_y = left_paddle.ycor() + 20
+    left_paddle.goto(left_paddle.xcor(), new_y)
+
+
+def go_down():
+    new_y = left_paddle.ycor() - 20
+    left_paddle.goto(left_paddle.xcor(), new_y)
+
+
+screen.listen()
+screen.onkey(fun=go_up, key="Up")
+screen.onkey(fun=go_down, key="Down")
 
 screen.exitonclick()
