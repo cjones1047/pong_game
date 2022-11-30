@@ -1,6 +1,7 @@
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
+from scoreboard import Scoreboard
 import time
 
 # TODO Draw the table
@@ -21,6 +22,7 @@ screen.tracer(0)
 l_paddle = Paddle((-350, 0))
 r_paddle = Paddle((350, 0))
 ball = Ball()
+scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkey(fun=l_paddle.go_up, key="w")
@@ -50,7 +52,9 @@ while game_is_on:
     # Detects a score and resets the ball
     if ball.xcor() > LEFT_SCORE:
         ball.score_reset(scorer="left")
+        scoreboard.score(side="left")
     elif ball.xcor() < RIGHT_SCORE:
         ball.score_reset(scorer="right")
+        scoreboard.score(side="right")
 
 screen.exitonclick()
